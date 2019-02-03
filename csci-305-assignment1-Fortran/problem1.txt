@@ -1,0 +1,52 @@
+PROGRAM MakeChange
+	IMPLICIT NONE
+	INTEGER :: Input
+	DO
+		WRITE(*,*) 'Pick a number from 1 to 99 to make change of a U.S dollar.'
+		READ(*,*) Input
+		IF (Input  >= 1 .AND. Input <= 99) EXIT
+		WRITE(*,*) 'Your input is out of range. Try again'
+	END DO
+	WRITE(*,*)
+
+	INTEGER :: Qvalue = 0 !quarters used
+	INTEGER :: Dvalue = 0 !dimes used
+	INTEGER :: Nvalue = 0  !nickles used
+	INTEGER :: Pvalue = 0  !penny used
+
+	INTEGER :: N = Input
+	DO 
+		IF (N != 0) THEN
+			IF(N >= 25) THEN
+				N = N - 25
+				Qvalue = Qvalue + 1
+			ELSE IF (N >= 10) THEN
+				N = N - 10
+				Dvalue = Dvalue + 1
+			ELSE IF (N >= 5)THEN 
+				N = N - 5
+				Nvalue = Nvalue + 1
+			ELSE IF (N >= 1) THEN
+				N = N - 1
+				Pvalue = Pvalue + 1
+			END IF
+		ELSE
+			EXIT
+		END IF
+	END DO
+	IF (Qvalue != 0) THEN
+		WRITE(*,*) Qvalue ' Quarter'
+	END IF
+	IF (Dvalue != 0) THEN
+		WRITE(*,*) Dvalue ' Dime'
+	END IF
+	IF (Nvalue != 0) THEN
+		WRITE(*,*) Nvalue ' Nickel'
+	END IF
+	IF (Pvalue != 0) THEN
+		WRITE(*,*) Pvalue ' Penny'
+END PROGRAM
+
+	
+	
+	
