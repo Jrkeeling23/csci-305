@@ -1,0 +1,20 @@
+1. A C switch statement in EBNF(extended Backus-Naur form) description. 
+	"C switch statement syntax"
+	switch(expression){ 
+		case constant-expression :
+			statement(s);
+			break;
+		case constant-expression :
+			statement(s);
+			break;
+		default :
+			statements;
+			break;
+
+<switch_stmt>  :: switch(<logic_expr>) {
+		case <literal> : { <stmt> ;}
+		default <stmt> : { <stmt> ; }}
+
+
+	
+	
