@@ -1,10 +1,12 @@
 PROGRAM MakeChange
     IMPLICIT NONE
-    INTEGER :: quarters, dimes, nickels, pennies, initialValue, inputValue ! variables
+    CHARACTER(LEN = 50) :: TEST
+    INTEGER :: quarters, dimes, nickels, pennies, initialValue, inputValue! variables
     quarters = 0
     dimes = 0
     nickels = 0
     pennies = 0
+
     DO
         WRITE(*, *) 'Enter a value from 1 to 99 to make change of' ! prompt user for input
         READ(*, *) initialValue ! reads in value to inputValue
@@ -24,19 +26,8 @@ PROGRAM MakeChange
     inputValue = initialValue
     pennies = findChange(inputValue, 1)
 
-    ! Determine what to print
-    IF(quarters /= 0) THEN
-        WRITE(*, *) 'Quarter', quarters
-    END IF
-    IF(dimes /= 0) THEN
-        WRITE(*, *) 'Dime', dimes
-    END IF
-    IF (nickels /= 0) THEN
-        WRITE(*, *) 'Nickel ', nickels
-    END IF
-    IF (pennies /= 0) THEN
-        WRITE(*, *) 'Penny ', pennies
-    END IF
+    CALL printChange(quarters, dimes, nickels, pennies) ! prints values correctly
+
 
 CONTAINS
 
@@ -94,5 +85,34 @@ CONTAINS
 
         RETURN
     END FUNCTION findChange
+
+
+    SUBROUTINE printChange(quarters, dimes, nickels, pennies)
+        IMPLICIT NONE
+        CHARACTER :: QString, Dstring, NString, PString, tempString
+        CHARACTER(LEN = 50) :: totalString
+        INTEGER, INTENT(IN) :: quarters, dimes, nickels, pennies
+        QString = " Quarter "
+        Dstring = " Dime "
+        NString = " Nickel "
+        PString = " Penny "
+
+        !sequence of if statments to concatenate strings to do non-advancing write
+        IF(quarters /= 0) THEN
+            WRITE(*, "(I1, A8)", ADVANCE = 'NO') quarters, 'Quarter'
+            !read(*,*) quarters
+        END IF
+        IF(dimes /= 0) THEN
+            WRITE(*, "(I2, A5)", ADVANCE = 'NO') dimes, 'Dime'
+        END IF
+        IF (nickels /= 0) THEN
+            WRITE(*, "(I2, A7)", ADVANCE = 'NO') nickels, 'Nickel'
+        END IF
+        IF (pennies /= 0) THEN
+            WRITE(*, "(I2, A6)", ADVANCE = 'NO') pennies, 'Penny'
+        END IF
+        WRITE(*, *)
+    END SUBROUTINE printChange
+
 
 END PROGRAM MakeChange
