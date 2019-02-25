@@ -1,5 +1,3 @@
-(defvar v 5)
-(print v)
 (defun sumNumbers (list)
     (cond 
         ((null list)
