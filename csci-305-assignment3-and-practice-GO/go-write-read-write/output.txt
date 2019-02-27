@@ -1,0 +1,5 @@
+The answer 
+to the last
+question of 
+the first quiz
+will be "GoLang".
