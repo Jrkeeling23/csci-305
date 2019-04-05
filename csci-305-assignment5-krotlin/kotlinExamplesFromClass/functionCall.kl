@@ -1,0 +1,12 @@
+fun someFunction(topic: Int, feeling: Int)  : Int
+{
+       val x = topic + feeling
+       return x;
+}
+
+fun main() {
+ 
+    println("Hello, world!!!")
+    val x = someFunction(52, 48)
+    println(x);
+}
