@@ -1,0 +1,28 @@
+import 'dart:html';
+//import 'dart:math';
+
+void getSum(MouseEvent event) {
+  
+  int num1 = int.parse((querySelector("#num1") as InputElement).value);
+  int num2 = int.parse((querySelector("#num2") as InputElement).value);
+  
+  var sum = (num1 + num2).toString();
+  
+  querySelector("#sum").text = "${num1} + ${num2} = ${sum}";
+  
+}
+
+CanvasElement context;
+CanvasRenderingContext2D ctx;
+int x = 60;
+int y = 45;
+
+
+
+void clear() {
+  
+}
+
+void main(){
+  getSum()
+}
